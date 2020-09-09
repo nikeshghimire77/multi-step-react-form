@@ -4,13 +4,19 @@ import { useForm, useStep } from 'react-hooks-helper';
 import Names from '../components/stepForm/Names';
 import Address from '../components/stepForm/Address';
 import Contact from '../components/stepForm/Contact';
-import Review from '../components/stepForm/Review';
+import { Review } from '../components/stepForm/Review';
 import Submit from '../components/stepForm/Submit';
 
 const defaultData = {
   firstName: '',
   lastName: '',
   nickName: '',
+  address: '',
+  city: '',
+  state: '',
+  zipcode: '',
+  phone: '',
+  email: '',
 };
 
 const steps = [
@@ -25,22 +31,22 @@ const MultiStepForm = () => {
   const [formData, setForm] = useForm(defaultData);
   const { step, navigation } = useStep({
     steps,
-    initialStep: 2,
+    initialStep: 0,
   });
+
+  const props = { formData, setForm, navigation };
 
   switch (step.id) {
     case 'names':
-      return <Names />;
-    case 'names':
-      return <Names />;
+      return <Names {...props} />;
     case 'address':
-      return <Address />;
+      return <Address {...props} />;
     case 'contact':
-      return <Contact />;
+      return <Contact {...props} />;
     case 'review':
-      return <Review />;
-    case 'Submit':
-      return <Submit />;
+      return <Review {...props} />;
+    case 'submit':
+      return <Submit {...props} />;
   }
 
   console.log(step);
