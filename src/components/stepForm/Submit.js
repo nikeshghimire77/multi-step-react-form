@@ -1,10 +1,11 @@
 import React from 'react';
+import Container from '@material-ui/core/Container';
 
 const Submit = () => {
   return (
-    <div>
-      <h1>Submit</h1>
-    </div>
+    <Container>
+      <h1>Thank you for submitting. We will contact you.</h1>
+    </Container>
   );
 };
 
